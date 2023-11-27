@@ -16,6 +16,8 @@ struct MathEquation {
         case divide
     }
     
+    // see some change -<<<<<<
+    
     var lhs: Decimal // cannot be optional
     var rhs: Decimal?
     var operation: OperationType?
