@@ -133,36 +133,44 @@ class CalculatorViewController: UIViewController {
     // MARK: - IBActions
     @IBAction private func clearPressed() {
         calculatorEngine.clearPressed()
+        refreshLCDDisplay()
     }
 
     @IBAction private func negatePressed() {
         calculatorEngine.negatePressed()
+        refreshLCDDisplay()
     }
 
     @IBAction private func percentagePressed() {
         calculatorEngine.percentagePressed()
+        refreshLCDDisplay()
     }
 
     
     // MARK: - Operations
     @IBAction private func addPressed() {
         calculatorEngine.addPressed()
+        refreshLCDDisplay()
     }
     
     @IBAction private func minusPressed() {
         calculatorEngine.minusPressed()
+        refreshLCDDisplay()
     }
     
     @IBAction private func multiplyPressed() {
         calculatorEngine.multiplyPressed()
+        refreshLCDDisplay()
     }
     
     @IBAction private func dividePressed() {
         calculatorEngine.dividePressed()
+        refreshLCDDisplay()
     }
     
     @IBAction private func equalsPressed() {
         calculatorEngine.equalsPressed()
+        refreshLCDDisplay()
     }
     
     // MARK: - Number Input
@@ -176,7 +184,13 @@ class CalculatorViewController: UIViewController {
         let number = sender.tag
         
         calculatorEngine.numberPressed(number)
+        refreshLCDDisplay()
         
+    }
+    
+    // MARK: - Refresh LCDDisplay
+    private func refreshLCDDisplay() {
+        displayLabel.text = calculatorEngine.lcdDisplayText
     }
 }
 
