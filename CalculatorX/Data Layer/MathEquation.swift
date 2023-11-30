@@ -7,6 +7,13 @@
 
 import Foundation
 
+// NOTES:
+/**
+ 
+ Single Responsiblity principle means a struct only has one purpose one responsibility only. Not Multiple. 
+ 
+ */
+
 struct MathEquation {
     
     enum OperationType {
@@ -22,6 +29,9 @@ struct MathEquation {
     var rhs: Decimal?
     var operation: OperationType?
     var result: Decimal?
+    
+    // MARK: - Execution
+    
     
     // mutating explicitly tells to mutate the result variable.
     mutating func execute() {
@@ -43,5 +53,14 @@ struct MathEquation {
             result = lhs / rhs
         }
               
+    }
+    
+    // MARK: - Negate
+    mutating func negateLeftHandSide() {
+        lhs.negate()
+    }
+    
+    mutating func negateRightHandSide() {
+        rhs?.negate()
     }
 }

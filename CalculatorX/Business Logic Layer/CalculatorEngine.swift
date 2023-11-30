@@ -54,7 +54,14 @@ struct CalculatorEngine {
     }
     
     mutating func negatePressed() {
-        
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.negateLeftHandSide()
+            lcdDisplayText = mathEquation.lhs.formatted()
+        case .rightHandSide:
+            mathEquation.negateRightHandSide()
+            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error"
+        }
     }
     
     mutating func percentagePressed() {
