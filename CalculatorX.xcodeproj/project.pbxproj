@@ -18,8 +18,6 @@
 		A1F52C2A2AFD791C00C74AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F52C292AFD791C00C74AC0 /* Assets.xcassets */; };
 		A1F52C2D2AFD791C00C74AC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F52C2B2AFD791C00C74AC0 /* LaunchScreen.storyboard */; };
 		A1F52C382AFD791C00C74AC0 /* MathEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C372AFD791C00C74AC0 /* MathEquationTests.swift */; };
-		A1F52C422AFD791C00C74AC0 /* CalculatorXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C412AFD791C00C74AC0 /* CalculatorXUITests.swift */; };
-		A1F52C442AFD791C00C74AC0 /* CalculatorXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C432AFD791C00C74AC0 /* CalculatorXUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +53,6 @@
 		A1F52C332AFD791C00C74AC0 /* CalculatorXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F52C372AFD791C00C74AC0 /* MathEquationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquationTests.swift; sourceTree = "<group>"; };
 		A1F52C3D2AFD791C00C74AC0 /* CalculatorXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1F52C412AFD791C00C74AC0 /* CalculatorXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorXUITests.swift; sourceTree = "<group>"; };
-		A1F52C432AFD791C00C74AC0 /* CalculatorXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorXUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +80,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A11FDCBB2B1854D600C46587 /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A11FDCBC2B18552B00C46587 /* UIKit Extension */,
+				A1F52C202AFD791900C74AC0 /* AppDelegate.swift */,
+				A1F52C222AFD791900C74AC0 /* SceneDelegate.swift */,
+				A11FDCBD2B18556C00C46587 /* UIViewControllers */,
+				A11FDCBE2B18558700C46587 /* Storyboards */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		A11FDCBC2B18552B00C46587 /* UIKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A139D22F2B0DB49900EDA099 /* UIColor+HexValue.swift */,
+			);
+			path = "UIKit Extension";
+			sourceTree = "<group>";
+		};
+		A11FDCBD2B18556C00C46587 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1F52C242AFD791900C74AC0 /* CalculatorViewController.swift */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		A11FDCBE2B18558700C46587 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A1F52C262AFD791900C74AC0 /* Main.storyboard */,
+				A1F52C2B2AFD791C00C74AC0 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A11FDCBF2B1855B900C46587 /* Business Logic Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A10570E12B168398000AE090 /* CalculatorEngine.swift */,
+			);
+			path = "Business Logic Layer";
+			sourceTree = "<group>";
+		};
+		A11FDCC02B1855EA00C46587 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */,
+				A12B71CF2B152A620008D90D /* MathEquation.swift */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
 		A1F52C142AFD791900C74AC0 = {
 			isa = PBXGroup;
 			children = (
 				A1F52C1F2AFD791900C74AC0 /* CalculatorX */,
 				A1F52C362AFD791C00C74AC0 /* CalculatorXTests */,
-				A1F52C402AFD791C00C74AC0 /* CalculatorXUITests */,
 				A1F52C1E2AFD791900C74AC0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,15 +156,9 @@
 		A1F52C1F2AFD791900C74AC0 /* CalculatorX */ = {
 			isa = PBXGroup;
 			children = (
-				A1F52C202AFD791900C74AC0 /* AppDelegate.swift */,
-				A1F52C222AFD791900C74AC0 /* SceneDelegate.swift */,
-				A1F52C242AFD791900C74AC0 /* CalculatorViewController.swift */,
-				A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */,
-				A139D22F2B0DB49900EDA099 /* UIColor+HexValue.swift */,
-				A10570E12B168398000AE090 /* CalculatorEngine.swift */,
-				A12B71CF2B152A620008D90D /* MathEquation.swift */,
-				A1F52C262AFD791900C74AC0 /* Main.storyboard */,
-				A1F52C2B2AFD791C00C74AC0 /* LaunchScreen.storyboard */,
+				A11FDCBB2B1854D600C46587 /* Presentation Layer */,
+				A11FDCBF2B1855B900C46587 /* Business Logic Layer */,
+				A11FDCC02B1855EA00C46587 /* Data Layer */,
 				A1F52C292AFD791C00C74AC0 /* Assets.xcassets */,
 				A1F52C2E2AFD791C00C74AC0 /* Info.plist */,
 			);
@@ -128,15 +171,6 @@
 				A1F52C372AFD791C00C74AC0 /* MathEquationTests.swift */,
 			);
 			path = CalculatorXTests;
-			sourceTree = "<group>";
-		};
-		A1F52C402AFD791C00C74AC0 /* CalculatorXUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A1F52C412AFD791C00C74AC0 /* CalculatorXUITests.swift */,
-				A1F52C432AFD791C00C74AC0 /* CalculatorXUITestsLaunchTests.swift */,
-			);
-			path = CalculatorXUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,8 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F52C422AFD791C00C74AC0 /* CalculatorXUITests.swift in Sources */,
-				A1F52C442AFD791C00C74AC0 /* CalculatorXUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

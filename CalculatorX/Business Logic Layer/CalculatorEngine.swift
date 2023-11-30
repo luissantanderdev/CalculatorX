@@ -48,7 +48,9 @@ struct CalculatorEngine {
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
-        
+        mathEquation = MathEquation(lhs: .zero)
+        lcdDisplayText = mathEquation.lhs.formatted()
+        operandSide = .leftHandSide
     }
     
     mutating func negatePressed() {
