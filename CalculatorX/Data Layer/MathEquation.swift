@@ -32,7 +32,6 @@ struct MathEquation {
     
     // MARK: - Execution
     
-    
     // mutating explicitly tells to mutate the result variable.
     mutating func execute() {
         // guard: Don't let the code continue unless its what it means
@@ -80,4 +79,48 @@ struct MathEquation {
     private func calculatePercentageValue(_ decimal: Decimal) -> Decimal {
         return decimal / 100
     }
+    
+    // MARK: - String Representation
+    
+    func generatePrintOut() -> String {
+        let operationString = generateStringRepresentationOfOperation()
+        return lhs.formatted() + " " + operationString + " " + (rhs?.formatted() ?? "") + " = " + (result?.formatted() ?? "Error")
+    }
+    
+    private func generateStringRepresentationOfOperation() -> String {
+        // NOTE: Instead of writing the guard statement you can alseo do the default
+        // guard let operation = self.operation else { return "" }
+        
+        switch operation {
+        case .add: return "+"
+        case .subtract: return "-"
+        case .multiply: return "*"
+        case .divide: return "/"
+        case .none:
+            return ""
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

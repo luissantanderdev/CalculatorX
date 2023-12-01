@@ -26,8 +26,6 @@
 //   Architecural Layer: Business Logic Layer
 //
 // *******************************************************************************************
-
-
 import Foundation
 
 struct CalculatorEngine {
@@ -99,7 +97,21 @@ struct CalculatorEngine {
     
     mutating func equalsPressed() {
         mathEquation.execute()
+        
+        printEquationToDebugConsole()
+        // NSLog(mathEquation.generatePrintOut()) // will print out in release build
         lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
+    }
+    
+    
+    // MARK: - Debug Console
+    // NOTE: This function was created particularly to tell future developers
+    //       that this is inteded to just print the math equation to the console.
+    //       why because it is expensive operation to print when an app is deployed.
+    //       this equation only exists in development. tells all our collegues
+    //       that this is for debugging purposes only. 
+    private func printEquationToDebugConsole() {
+        print("Equation " + mathEquation.generatePrintOut())
     }
     
     // MARK: - Number Input
