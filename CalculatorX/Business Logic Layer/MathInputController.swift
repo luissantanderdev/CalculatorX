@@ -33,6 +33,11 @@ struct MathInputController {
     
     private var operandSide = OperandSide.leftHandSide
     
+    // MARK: - Constants
+    
+    let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    
+    
     // MARK: - Math Equation
     
     // NOTES: -
@@ -51,7 +56,7 @@ struct MathInputController {
     // MARK: - Initializer
     
     init() {
-        lcdDisplayText = mathEquation.lhs.formatted()
+        lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
     }
     
     // MARK: - Extra Functions
@@ -60,10 +65,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            lcdDisplayText = mathEquation.lhs.formatted()
+            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error"
+            lcdDisplayText = formatLCDDisplay(mathEquation.rhs)
         }
     }
     
@@ -71,10 +76,10 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPercentageToLeftHandSide()
-            lcdDisplayText = mathEquation.lhs.formatted()
+            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.applyPercentageToRightHandSide()
-            lcdDisplayText = mathEquation.rhs?.formatted() ?? "Error"
+            lcdDisplayText = formatLCDDisplay(mathEquation.rhs)
         }
     }
     
@@ -102,7 +107,7 @@ struct MathInputController {
     
     mutating func execute() {
         mathEquation.execute()
-        lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
+        lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
     
     // MARK: - Number Input
@@ -133,14 +138,28 @@ struct MathInputController {
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
         
+        newStringRepresentation = newStringRepresentation.replacingOccurrences(of: groupingSymbol, with: "")
+        
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
         guard let convertNumber = formatter.number(from: newStringRepresentation) else { return (.nan, "Error") }
         
         let newNumber: Decimal = convertNumber.decimalValue
-        let newLCDDisplayText = newStringRepresentation
-        
+        let newLCDDisplayText = formatLCDDisplay(newNumber)
         return (newNumber, newLCDDisplayText)
+    }
+    
+    // MARK: - LCD Display Formatting
+    
+    /**
+        Notes:
+            Let's apply the dry principle for the formatting of the decimal. we are going to centralize the code.
+                
+     */
+    private func formatLCDDisplay(_ decimal: Decimal?) -> String {
+        guard let decimal = decimal else { return "Error" }
+    
+        return decimal.formatted()
     }
 }
