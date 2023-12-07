@@ -3,7 +3,7 @@
 //  CalculatorX
 //
 //  Created by Luis Santander on 12/3/23.
-//
+//  Following the iOS Calculator Course
 
 import Foundation
 
