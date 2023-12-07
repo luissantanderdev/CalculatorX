@@ -176,6 +176,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Number Input
     @IBAction private func decimalPressed() {
         calculatorEngine.decimalPressed()
+        refreshLCDDisplay()
     }
     
     // NOTES: - By accessing the tag attribute allows you
