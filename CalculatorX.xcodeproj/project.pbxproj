@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A101AD752B22CF8300C1DFC4 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101AD742B22CF8300C1DFC4 /* String+Prefix.swift */; };
 		A10570E22B168398000AE090 /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10570E12B168398000AE090 /* CalculatorEngine.swift */; };
 		A12B69F92B1C95FB00C55C9E /* MathInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B69F82B1C95FB00C55C9E /* MathInputController.swift */; };
 		A12B71D02B152A620008D90D /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B71CF2B152A620008D90D /* MathEquation.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A101AD742B22CF8300C1DFC4 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 		A10570E12B168398000AE090 /* CalculatorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
 		A12B69F82B1C95FB00C55C9E /* MathInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputController.swift; sourceTree = "<group>"; };
 		A12B71CF2B152A620008D90D /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A101AD762B22D2BC00C1DFC4 /* Swift Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A101AD742B22CF8300C1DFC4 /* String+Prefix.swift */,
+			);
+			path = "Swift Extensions";
+			sourceTree = "<group>";
+		};
 		A11FDCBB2B1854D600C46587 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 		A1F52C1F2AFD791900C74AC0 /* CalculatorX */ = {
 			isa = PBXGroup;
 			children = (
+				A101AD762B22D2BC00C1DFC4 /* Swift Extensions */,
 				A11FDCBB2B1854D600C46587 /* Presentation Layer */,
 				A11FDCBF2B1855B900C46587 /* Business Logic Layer */,
 				A11FDCC02B1855EA00C46587 /* Data Layer */,
@@ -311,6 +322,7 @@
 				A12B71D02B152A620008D90D /* MathEquation.swift in Sources */,
 				A12B69F92B1C95FB00C55C9E /* MathInputController.swift in Sources */,
 				A1F52C252AFD791900C74AC0 /* CalculatorViewController.swift in Sources */,
+				A101AD752B22CF8300C1DFC4 /* String+Prefix.swift in Sources */,
 				A139D22E2B0DB3F100EDA099 /* CalculatorTheme.swift in Sources */,
 				A1F52C212AFD791900C74AC0 /* AppDelegate.swift in Sources */,
 				A10570E22B168398000AE090 /* CalculatorEngine.swift in Sources */,
