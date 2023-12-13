@@ -32,7 +32,10 @@ import Foundation
 // NOTES: -
 /**
  
- The calculator engine is the API that is exposed to the presentation layer. 
+ The calculator engine is the API that is exposed to the presentation layer.
+ 
+ for consitancy we added guard inputController.isCompleted == false else { return } on all functions in order to tell future developers about
+ the validation and they can understand the behaviour we implemented. 
  */
 
 
@@ -55,24 +58,34 @@ struct CalculatorEngine {
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController = MathInputController()
     }
     
     mutating func negatePressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.negatePressed()
     }
     
     mutating func percentagePressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.percentagePressed()
     }
     
     // MARK: - Operations
     
     mutating func addPressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.addPressed()
     }
     
     mutating func minusPressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.minusPressed()
     }
     
@@ -81,10 +94,14 @@ struct CalculatorEngine {
     }
     
     mutating func dividePressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.dividePressed()
     }
     
     mutating func equalsPressed() {
+        guard inputController.isCompleted == false else { return }
+        
         inputController.execute()
         historyLog.append(inputController.mathEquation)
         printEquationToDebugConsole()

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // NOTES:
 /**
  
@@ -38,6 +37,7 @@ struct MathInputController {
     private let groupingSymbol = Locale.current.groupingSeparator ?? ","
     private let decimalSymbol = Locale.current.decimalSeparator ?? "."
     private let minusSymbol = "-"
+    private let errorMessage = "Error"
     
     // MARK: - Math Equation
     
@@ -64,6 +64,8 @@ struct MathInputController {
     // MARK: - Extra Functions
     
     mutating func negatePressed() {
+        guard isCompleted == false else { return }
+        
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
@@ -86,6 +88,8 @@ struct MathInputController {
     }
     
     mutating func percentagePressed() {
+        guard isCompleted == false else { return }
+        
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPercentageToLeftHandSide()
@@ -99,26 +103,36 @@ struct MathInputController {
     // MARK: - Operations
     
     mutating func addPressed() {
+        guard isCompleted == false else { return }
+
         mathEquation.operation = MathEquation.OperationType.add
         startEditingRightHandSide()
     }
     
     mutating func minusPressed() {
+        guard isCompleted == false else { return }
+
         mathEquation.operation = MathEquation.OperationType.subtract
         startEditingRightHandSide()
     }
     
     mutating func multiplyPressed() {
+        guard isCompleted == false else { return }
+
         mathEquation.operation = MathEquation.OperationType.multiply
         startEditingRightHandSide()
     }
     
     mutating func dividePressed() {
+        guard isCompleted == false else { return }
+
         mathEquation.operation = MathEquation.OperationType.divide
         startEditingRightHandSide()
     }
     
     mutating func execute() {
+        guard isCompleted == false else { return }
+        
         mathEquation.execute()
         lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
@@ -167,8 +181,6 @@ struct MathInputController {
             return appendNewDecimalNumber(number)
         }
         
-        
-        
         let stringInput = String(number)
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
@@ -178,7 +190,7 @@ struct MathInputController {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        guard let convertNumber = formatter.number(from: newStringRepresentation) else { return (.nan, "Error") }
+        guard let convertNumber = formatter.number(from: newStringRepresentation) else { return (.nan, errorMessage) }
         
         let newNumber: Decimal = convertNumber.decimalValue
         let newLCDDisplayText = formatLCDDisplay(newNumber)
@@ -194,7 +206,7 @@ struct MathInputController {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        guard let convertNumber = formatter.number(from: newLCDDisplayText) else { return (.nan, "Error") }
+        guard let convertNumber = formatter.number(from: newLCDDisplayText) else { return (.nan, errorMessage) }
         
         let newNumber: Decimal = convertNumber.decimalValue
         return (newNumber, newLCDDisplayText)
@@ -208,8 +220,16 @@ struct MathInputController {
                 
      */
     private func formatLCDDisplay(_ decimal: Decimal?) -> String {
-        guard let decimal = decimal else { return "Error" }
+        guard
+            let decimal = decimal,
+            decimal.isNaN == false
+        else { return errorMessage }
     
         return decimal.formatted()
+    }
+    
+    // MARK: - Computed Properties
+    var isCompleted: Bool {
+        return mathEquation.executed
     }
 }

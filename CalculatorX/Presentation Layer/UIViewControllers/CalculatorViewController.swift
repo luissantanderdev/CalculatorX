@@ -164,6 +164,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func dividePressed() {
+        
         calculatorEngine.dividePressed()
         refreshLCDDisplay()
     }

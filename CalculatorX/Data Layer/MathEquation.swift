@@ -32,8 +32,15 @@ struct MathEquation {
     
     // MARK: - Execution
     
-    // mutating explicitly tells to mutate the result variable.
+    var executed: Bool {
+        return result != nil
+    }
+    
+    // or you can just leave executed as a variable and maintain it by
+    
+    // mutating explicitly tells to mutate the result variable as seen in the execute() struct function 
     mutating func execute() {
+        // executed = true
         // guard: Don't let the code continue unless its what it means
         guard
             let rhs = self.rhs,
