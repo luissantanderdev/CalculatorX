@@ -5,6 +5,15 @@
 //  Created by Luis Santander on 11/9/23.
 //
 
+/**
+        Popular to common belief comments are not to be used in code. your code
+            must convey to future developers what you are trying to do so what
+                my university tought me I have to scrap it in the final refactoring.
+ 
+ 
+ 
+ */
+
 import UIKit
 
 class CalculatorViewController: UIViewController {
@@ -40,14 +49,16 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Color Themes
     
-    /*
-     gray: #a6a6a6
-     dark gray: #333333
-     orange: #ff9f0a
-     */
+    private var currentTheme: CalculatorTheme {
+        return purpleTheme
+    }
     
-    var currentTheme: CalculatorTheme {
+    private var darkTheme: CalculatorTheme {
         return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionFillColor: "#FFFFFF", operationColor: "#ff9f0a", operationTileColor: "#FFFFFF", pinPadColor: "#333333", pinPadTileColor: "#FFFFFF")
+    }
+    
+    private var purpleTheme: CalculatorTheme {
+        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionFillColor: "#FFFFFF", operationColor: "#7550FE", operationTileColor: "#FFFFFF", pinPadColor: "#333333", pinPadTileColor: "#FFFFFF")
     }
     
     // MARK: - Calculator Engine
