@@ -58,8 +58,6 @@ struct CalculatorEngine {
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
-        guard inputController.isCompleted == false else { return }
-        
         inputController = MathInputController()
     }
     

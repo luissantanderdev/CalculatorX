@@ -52,15 +52,7 @@ class CalculatorViewController: UIViewController {
     private var currentTheme: CalculatorTheme {
         return purpleTheme
     }
-    
-    private var darkTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionFillColor: "#FFFFFF", operationColor: "#ff9f0a", operationTileColor: "#FFFFFF", pinPadColor: "#333333", pinPadTileColor: "#FFFFFF")
-    }
-    
-    private var purpleTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionFillColor: "#FFFFFF", operationColor: "#7550FE", operationTileColor: "#FFFFFF", pinPadColor: "#333333", pinPadTileColor: "#FFFFFF")
-    }
-    
+        
     // MARK: - Calculator Engine
     private var calculatorEngine = CalculatorEngine()
     
@@ -128,15 +120,15 @@ class CalculatorViewController: UIViewController {
         decorateButtons(button)
     
         button.tintColor = UIColor(hex: currentTheme.operationColor)
-        button.setTitleColor(UIColor(hex: currentTheme.operationTileColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
     }
     
     private func decoratePinPadButtons(_ button: UIButton, _ usingSlicedImage: Bool = false) {
         decorateButtons(button, usingSlicedImage)
         
-        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
-        button.setTitleColor(UIColor(hex: currentTheme.pinPadTileColor), for: .normal)
+        button.tintColor = UIColor(hex: currentTheme.pinpadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinpadTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
     }
     

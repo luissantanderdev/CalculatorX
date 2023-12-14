@@ -20,8 +20,8 @@ struct CalculatorTheme {
     let extraFunctionFillColor: String
     
     let operationColor: String
-    let operationTileColor: String
+    let operationTitleColor: String
     
-    let pinPadColor: String
-    let pinPadTileColor: String
+    let pinpadColor: String
+    let pinpadTitleColor: String
 }
