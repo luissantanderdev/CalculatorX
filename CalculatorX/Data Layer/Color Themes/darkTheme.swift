@@ -1,5 +1,5 @@
 //
-//  washedOutTheme.swift
+//  darkTheme.swift
 //  Calc
 //
 //  Created by iOSBFree on 24/01/2022.
@@ -33,18 +33,20 @@ import Foundation
 
 extension CalculatorViewController {
     
-//    var washedOutTheme: CalculatorTheme {
-//        return CalculatorTheme(
-//            backgroundColor:                "#ECF5FF",
-//            displayColor:                   "#0D2A4B",
-//
-//            extraFunctionColor:             "#A3CFF9",
-//            extraFunctionTitleColor:        "#5487BA",
-//
-//            operationColor:                 "#A3CFF9",
-//            operationTitleColor:            "#5487BA",
-//
-//            pinpadColor:                    "#1D1D1D",
-//            pinpadTitleColor:               "#FFFFFF")
-//    }
+    var darkTheme: CalculatorTheme {
+        return CalculatorTheme(
+            backgroundColor:                "#000000",
+            displayColor:                   "#FFFFFF",
+                               
+            extraFunctionColor:             "#a6a6a6",
+            extraFunctionFillColor:        "#000000",
+            
+            operationColor:                 "#ff9f0a",
+            operationTitleColor:            "#FFFFFF",
+            
+            pinpadColor:                    "#333333",
+            pinpadTitleColor:               "#FFFFFF",
+            
+            statusBarStyle: .light)
+    }
 }

@@ -50,7 +50,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Color Themes
     
     private var currentTheme: CalculatorTheme {
-        return purpleTheme
+        return lightBlueTheme
     }
         
     // MARK: - Calculator Engine
@@ -71,7 +71,16 @@ class CalculatorViewController: UIViewController {
         lcdDisplay.backgroundColor = .clear
         displayLabel.textColor = UIColor(hex: currentTheme.displayColor)
         
+        setNeedsStatusBarAppearanceUpdate()
+        
         decorateButtons()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch currentTheme.statusBarStyle {
+        case .light: return .lightContent
+        case .dark: return .darkContent
+        }
     }
     
     private func decorateButtons() {

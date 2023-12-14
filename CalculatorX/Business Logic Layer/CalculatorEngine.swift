@@ -108,7 +108,6 @@ struct CalculatorEngine {
         
     }
     
-    
     // MARK: - Debug Console
     // NOTE: This function was created particularly to tell future developers
     //       that this is inteded to just print the math equation to the console.

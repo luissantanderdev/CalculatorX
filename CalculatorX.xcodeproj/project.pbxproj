@@ -161,6 +161,16 @@
 		A11FDCC02B1855EA00C46587 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */,
+				A12B71CF2B152A620008D90D /* MathEquation.swift */,
+				A15AF5FB2B2BA58B00184923 /* Color Themes */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		A15AF5FB2B2BA58B00184923 /* Color Themes */ = {
+			isa = PBXGroup;
+			children = (
 				A172DA972B2B9D68003BC7E3 /* darkTheme.swift */,
 				A172DA922B2B9D67003BC7E3 /* purpleTheme.swift */,
 				A172DA912B2B9D67003BC7E3 /* bloodOrangeTheme.swift */,
@@ -171,10 +181,8 @@
 				A172DA952B2B9D67003BC7E3 /* orangeTheme.swift */,
 				A172DA932B2B9D67003BC7E3 /* pinkTheme.swift */,
 				A172DA902B2B9D66003BC7E3 /* washedOutTheme.swift */,
-				A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */,
-				A12B71CF2B152A620008D90D /* MathEquation.swift */,
 			);
-			path = "Data Layer";
+			path = "Color Themes";
 			sourceTree = "<group>";
 		};
 		A1F52C142AFD791900C74AC0 = {

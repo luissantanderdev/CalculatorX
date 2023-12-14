@@ -1,5 +1,5 @@
 //
-//  pinkTheme.swift
+//  purpleTheme.swift
 //  Calc
 //
 //  Created by iOSBFree on 24/01/2022.
@@ -32,19 +32,20 @@ import Foundation
 
 
 extension CalculatorViewController {
-    
-    var pinkTheme: CalculatorTheme {
+    var purpleTheme: CalculatorTheme {
         return CalculatorTheme(
-            backgroundColor:                "#253C5B",
-            displayColor:                   "#EBF0EF",
+            backgroundColor:                "#F4F5FA",
+            displayColor:                   "#1D1D1D",
                                
-            extraFunctionColor:             "#294666",
-            extraFunctionFillColor:        "#EBF0EF",
-                               
-            operationColor:                 "#FA569C",
-            operationTitleColor:            "#EBF0EF",
-                               
-            pinpadColor:                    "#16253A",
-            pinpadTitleColor:               "#EBF0EF")
+            extraFunctionColor:             "#F4F5FA",
+            extraFunctionFillColor:        "#7550FE",
+            
+            operationColor:                 "#7550FE",
+            operationTitleColor:            "#FFFFFF",
+            
+            pinpadColor:                    "#1D1D1D",
+            pinpadTitleColor:               "#FFFFFF",
+        
+            statusBarStyle: .dark)
     }
 }

@@ -11,6 +11,11 @@ import Foundation
 //       so it is best to utilize our own function that converts a string hex value to r,g,b
 //       basically decoupling from the framework.
 
+enum StatusBarStyle {
+    case light
+    case dark
+}
+
 
 struct CalculatorTheme {
     let backgroundColor: String
@@ -24,4 +29,6 @@ struct CalculatorTheme {
     
     let pinpadColor: String
     let pinpadTitleColor: String
+    
+    let statusBarStyle: StatusBarStyle
 }
