@@ -31,7 +31,7 @@
 import Foundation
 
 
-extension CalculatorViewController {
+extension ThemeManager {
     
     var lightTheme: CalculatorTheme {
         return CalculatorTheme(

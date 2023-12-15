@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A101AD752B22CF8300C1DFC4 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101AD742B22CF8300C1DFC4 /* String+Prefix.swift */; };
 		A10570E22B168398000AE090 /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10570E12B168398000AE090 /* CalculatorEngine.swift */; };
+		A10842582B2CC90600B20DD1 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10842572B2CC90600B20DD1 /* ThemeManager.swift */; };
 		A12B69F92B1C95FB00C55C9E /* MathInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B69F82B1C95FB00C55C9E /* MathInputController.swift */; };
 		A12B71D02B152A620008D90D /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B71CF2B152A620008D90D /* MathEquation.swift */; };
 		A139D22E2B0DB3F100EDA099 /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		A101AD742B22CF8300C1DFC4 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 		A10570E12B168398000AE090 /* CalculatorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
+		A10842572B2CC90600B20DD1 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		A12B69F82B1C95FB00C55C9E /* MathInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputController.swift; sourceTree = "<group>"; };
 		A12B71CF2B152A620008D90D /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
 		A139D22D2B0DB3F100EDA099 /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				A10570E12B168398000AE090 /* CalculatorEngine.swift */,
 				A12B69F82B1C95FB00C55C9E /* MathInputController.swift */,
+				A10842572B2CC90600B20DD1 /* ThemeManager.swift */,
 			);
 			path = "Business Logic Layer";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				A12B69F92B1C95FB00C55C9E /* MathInputController.swift in Sources */,
 				A1F52C252AFD791900C74AC0 /* CalculatorViewController.swift in Sources */,
 				A101AD752B22CF8300C1DFC4 /* String+Prefix.swift in Sources */,
+				A10842582B2CC90600B20DD1 /* ThemeManager.swift in Sources */,
 				A139D22E2B0DB3F100EDA099 /* CalculatorTheme.swift in Sources */,
 				A172DA992B2B9D68003BC7E3 /* lightTheme.swift in Sources */,
 				A1F52C212AFD791900C74AC0 /* AppDelegate.swift in Sources */,
