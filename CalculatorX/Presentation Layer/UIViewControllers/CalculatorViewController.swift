@@ -22,7 +22,6 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var lcdDisplay: UIView!
     @IBOutlet weak var displayLabel: UILabel!
     
-    
     @IBOutlet weak var pinpadButton0: UIButton!
     @IBOutlet weak var pinpadButton1: UIButton!
     @IBOutlet weak var pinpadButton2: UIButton!
@@ -64,14 +63,38 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
-        super.viewDidLoad()
         // Do any additional setup after loading the view.
-        decorateView()
+        super.viewDidLoad()
+        addThemeGestureRecognizer()
+        redecorateView()
+    }
+    
+    // MARK: - Gestures
+    
+    private func addThemeGestureRecognizer() {
+        let themeGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.themeGestureRecognizerDidTap(_:)))
+        
+        themeGestureRecognizer.numberOfTapsRequired = 2
+        
+        lcdDisplay.addGestureRecognizer(themeGestureRecognizer)
+    }
+    
+    @objc private func themeGestureRecognizerDidTap(_ gesture: UITapGestureRecognizer) {
+        
+        decorateViewWithNextTheme()
+        
     }
     
     // MARK: - Decorate
     
-    private func decorateView() {
+    private func decorateViewWithNextTheme() {
+        
+        print("User did tap")
+        ThemeManager.shared.moveToTheNextTheme()
+        redecorateView()
+    }
+    
+    private func redecorateView() {
         view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
         
         lcdDisplay.backgroundColor = .clear
@@ -147,7 +170,6 @@ class CalculatorViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: pinPadButtonsFontSize)
     }
     
-    
     // MARK: - IBActions
     @IBAction private func clearPressed() {
         calculatorEngine.clearPressed()
@@ -164,7 +186,6 @@ class CalculatorViewController: UIViewController {
         refreshLCDDisplay()
     }
 
-    
     // MARK: - Operations
     @IBAction private func addPressed() {
         calculatorEngine.addPressed()

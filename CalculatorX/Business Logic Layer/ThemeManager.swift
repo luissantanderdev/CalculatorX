@@ -26,6 +26,7 @@ class ThemeManager {
     
     // MARK: - Themes
     
+    private var savedThemeIndex = 0
     private(set) var themes: [CalculatorTheme] = []
     private var savedTheme: CalculatorTheme?
     var currentTheme: CalculatorTheme {
@@ -44,5 +45,17 @@ class ThemeManager {
     
     private func populateArrayOfThemes() {
         themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme]
+    }
+    
+    // MARK: - Next Theme
+    
+    func moveToTheNextTheme() {
+        savedThemeIndex = savedThemeIndex + 1
+        
+        if savedThemeIndex > themes.count - 1 {
+            savedThemeIndex = 0
+        }
+        
+        savedTheme = themes[savedThemeIndex]
     }
 }
