@@ -40,10 +40,26 @@ class ThemeManager {
     
     init() {
         populateArrayOfThemes()
+        restoreSavedThemeIndex()
     }
     
     private func populateArrayOfThemes() {
         themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme]
+    }
+    
+    // MARK: - Save & Restore to Disk
+    
+    private func restoreSavedThemeIndex() {
+        savedThemeIndex = 0
+        if let previousThemeIndex = UserDefaults.standard.object(forKey: "luissantanderdev.com.CalculatorX.ThemeManager.ThemeIndex") as? Int {
+            savedThemeIndex = previousThemeIndex
+        }
+        
+        savedTheme = themes[savedThemeIndex]
+    }
+    
+    private func saveThemeIndexToDisk() {
+        UserDefaults.standard.set(savedThemeIndex, forKey: "luissantanderdev.com.CalculatorX.ThemeManager.ThemeIndex")
     }
     
     // MARK: - Next Theme
@@ -56,5 +72,6 @@ class ThemeManager {
         }
         
         savedTheme = themes[savedThemeIndex]
+        saveThemeIndexToDisk()
     }
 }
