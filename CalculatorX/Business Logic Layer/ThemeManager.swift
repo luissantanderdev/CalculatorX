@@ -16,7 +16,6 @@ import Foundation
          access to resources, manage global state, or coordinate actions within a system.
  */
 
-
 class ThemeManager {
     
     // MARK: - Singleton
