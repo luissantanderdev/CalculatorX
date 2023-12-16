@@ -11,13 +11,19 @@ import Foundation
 //       so it is best to utilize our own function that converts a string hex value to r,g,b
 //       basically decoupling from the framework.
 
-enum StatusBarStyle {
+enum StatusBarStyle: Codable {
     case light
     case dark
 }
 
+/**
+ NOTES:
+ Codabe allows you to convert a struct into JSON format.
+ */
 
-struct CalculatorTheme {
+struct CalculatorTheme: Codable {
+    let id: String
+    
     let backgroundColor: String
     let displayColor: String
     

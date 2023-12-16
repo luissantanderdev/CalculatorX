@@ -35,6 +35,8 @@ extension ThemeManager {
     
     var pinkTheme: CalculatorTheme {
         return CalculatorTheme(
+            id:                             "9",
+            
             backgroundColor:                "#253C5B",
             displayColor:                   "#EBF0EF",
                                

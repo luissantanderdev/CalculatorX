@@ -45,35 +45,50 @@ class ThemeManager {
     
     init() {
         populateArrayOfThemes()
-        restoreSavedThemeIndex()
+        restoreSavedTheme()
     }
     
     private func populateArrayOfThemes() {
-        themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme]
+        themes = [darkTheme]
     }
     
     // MARK: - Save & Restore to Disk
     
-    private func restoreSavedThemeIndex() {
-        savedThemeIndex = 0
-        
-        if let previousThemeIndex = dataStore.getValue() as? Int {
-            savedThemeIndex = previousThemeIndex
-        }
+    private func restoreSavedTheme() {
+//        savedThemeIndex = 0
+//
+//        if let previousThemeIndex = dataStore.getValue() as? Int {
+//            savedThemeIndex = previousThemeIndex
+//        }
         
 //        NOTE: Not good convention it is better to have a Data Store Manager like up above
 //        if let previousThemeIndex = UserDefaults.standard.object(forKey: themeStoreKey) as? Int {
 //            savedThemeIndex = previousThemeIndex
 //        }
         
-        savedTheme = themes[savedThemeIndex]
+//        savedTheme = themes[savedThemeIndex]
+        
+        
+        guard let encodedTheme = dataStore.getValue() as? Data else {
+            return
+        }
+        
+        let decoder = JSONDecoder()
+        if let previousTheme = try? decoder.decode(CalculatorTheme.self, from: encodedTheme) {
+            savedTheme = previousTheme
+        }
+        
     }
     
-    private func saveThemeIndexToDisk() {
-        
-        dataStore.set(savedThemeIndex)
-        
+    private func saveThemeToDisk(_ theme: CalculatorTheme) {
+        // dataStore.set(savedThemeIndex)
         // UserDefaults.standard.set(savedThemeIndex, forKey: themeStoreKey)
+        
+        let encoder = JSONEncoder()
+        if let encodedTheme = try? encoder.encode(theme) {
+            dataStore.set(encodedTheme)
+        }
+        
     }
     
     // MARK: - Next Theme
@@ -85,7 +100,8 @@ class ThemeManager {
             savedThemeIndex = 0
         }
         
-        savedTheme = themes[savedThemeIndex]
-        saveThemeIndexToDisk()
+        let theme = themes[savedThemeIndex]
+        savedTheme = theme
+        saveThemeToDisk(theme)
     }
 }
