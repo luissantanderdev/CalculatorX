@@ -17,7 +17,12 @@ import Foundation
  */
 
 class ThemeManager {
+        
+    // MARK: Data Storage
     
+    private var dataStore = DataStoreManager(key: "luissantanderdev.com.CalculatorX.ThemeManager.ThemeIndex")
+    
+
     // MARK: - Singleton
     
     // declare a singleton.
@@ -51,15 +56,24 @@ class ThemeManager {
     
     private func restoreSavedThemeIndex() {
         savedThemeIndex = 0
-        if let previousThemeIndex = UserDefaults.standard.object(forKey: "luissantanderdev.com.CalculatorX.ThemeManager.ThemeIndex") as? Int {
+        
+        if let previousThemeIndex = dataStore.getValue() as? Int {
             savedThemeIndex = previousThemeIndex
         }
+        
+//        NOTE: Not good convention it is better to have a Data Store Manager like up above
+//        if let previousThemeIndex = UserDefaults.standard.object(forKey: themeStoreKey) as? Int {
+//            savedThemeIndex = previousThemeIndex
+//        }
         
         savedTheme = themes[savedThemeIndex]
     }
     
     private func saveThemeIndexToDisk() {
-        UserDefaults.standard.set(savedThemeIndex, forKey: "luissantanderdev.com.CalculatorX.ThemeManager.ThemeIndex")
+        
+        dataStore.set(savedThemeIndex)
+        
+        // UserDefaults.standard.set(savedThemeIndex, forKey: themeStoreKey)
     }
     
     // MARK: - Next Theme
