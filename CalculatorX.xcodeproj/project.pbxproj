@@ -25,6 +25,7 @@
 		A17EF0E32B314F59004D90F5 /* purpleTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF0D92B314F58004D90F5 /* purpleTheme.swift */; };
 		A17EF0E42B314F59004D90F5 /* darkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF0DA2B314F58004D90F5 /* darkTheme.swift */; };
 		A17EF0E52B314F59004D90F5 /* washedOutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EF0DB2B314F58004D90F5 /* washedOutTheme.swift */; };
+		A1BE7B9B2B321912008B5808 /* LCDDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE7B9A2B321912008B5808 /* LCDDisplay.swift */; };
 		A1F52C212AFD791900C74AC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C202AFD791900C74AC0 /* AppDelegate.swift */; };
 		A1F52C232AFD791900C74AC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C222AFD791900C74AC0 /* SceneDelegate.swift */; };
 		A1F52C252AFD791900C74AC0 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F52C242AFD791900C74AC0 /* CalculatorViewController.swift */; };
@@ -70,6 +71,7 @@
 		A17EF0D92B314F58004D90F5 /* purpleTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = purpleTheme.swift; sourceTree = "<group>"; };
 		A17EF0DA2B314F58004D90F5 /* darkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = darkTheme.swift; sourceTree = "<group>"; };
 		A17EF0DB2B314F58004D90F5 /* washedOutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = washedOutTheme.swift; sourceTree = "<group>"; };
+		A1BE7B9A2B321912008B5808 /* LCDDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCDDisplay.swift; sourceTree = "<group>"; };
 		A1F52C1D2AFD791900C74AC0 /* CalculatorX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F52C202AFD791900C74AC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1F52C222AFD791900C74AC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		A11FDCBB2B1854D600C46587 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A1BE7B9C2B321AEF008B5808 /* UIKit Subclasses */,
 				A11FDCBC2B18552B00C46587 /* UIKit Extension */,
 				A1F52C202AFD791900C74AC0 /* AppDelegate.swift */,
 				A1F52C222AFD791900C74AC0 /* SceneDelegate.swift */,
@@ -196,6 +199,14 @@
 				A17EF0DB2B314F58004D90F5 /* washedOutTheme.swift */,
 			);
 			path = "Color Themes";
+			sourceTree = "<group>";
+		};
+		A1BE7B9C2B321AEF008B5808 /* UIKit Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE7B9A2B321912008B5808 /* LCDDisplay.swift */,
+			);
+			path = "UIKit Subclasses";
 			sourceTree = "<group>";
 		};
 		A1F52C142AFD791900C74AC0 = {
@@ -370,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1BE7B9B2B321912008B5808 /* LCDDisplay.swift in Sources */,
 				A139D2302B0DB49900EDA099 /* UIColor+HexValue.swift in Sources */,
 				A17EF0E52B314F59004D90F5 /* washedOutTheme.swift in Sources */,
 				A12B71D02B152A620008D90D /* MathEquation.swift in Sources */,
