@@ -59,6 +59,7 @@ class CalculatorViewController: UIViewController {
     }
         
     // MARK: - Calculator Engine
+    
     private var calculatorEngine = CalculatorEngine()
     
     // MARK: - Life Cycle
@@ -136,9 +137,7 @@ class CalculatorViewController: UIViewController {
     
     // DESC: Decorates the bubbles with circles in the UI.
     private func decorateButtons(_ button: UIButton, _ usingSlicedImage: Bool = false) {
-        
         let image = usingSlicedImage ? UIImage(named: "CircleSliced") : UIImage(named: "Circle")
-        
         button.setBackgroundImage(image, for: .normal)
         button.backgroundColor = .clear
     }
@@ -147,7 +146,7 @@ class CalculatorViewController: UIViewController {
         decorateButtons(button)
         
         button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
-        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionFillColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: extraFunctionsButtonsFontSize)
     }
     
@@ -156,6 +155,7 @@ class CalculatorViewController: UIViewController {
     
         button.tintColor = UIColor(hex: currentTheme.operationColor)
         button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleSelectedColor), for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: operationButtonsFontSize)
     }
     
@@ -167,8 +167,23 @@ class CalculatorViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: pinPadButtonsFontSize)
     }
     
+    // MARK: - Select Operation Buttons
+    
+    private func deselectOperationButtons() {
+        selectOperationButton(divideButton, false)
+        selectOperationButton(multiplyButton, false)
+        selectOperationButton(minusButton, false)
+        selectOperationButton(addButton, false)
+    }
+
+    private func selectOperationButton(_ button: UIButton, _ selected: Bool) {
+        button.tintColor = selected ? UIColor(hex: currentTheme.operationSelectedColor) : UIColor(hex: currentTheme.operationColor)
+        button.isSelected = selected
+    }
+    
     // MARK: - IBActions
     @IBAction private func clearPressed() {
+        deselectOperationButtons()
         calculatorEngine.clearPressed()
         refreshLCDDisplay()
     }
@@ -185,33 +200,49 @@ class CalculatorViewController: UIViewController {
 
     // MARK: - Operations
     @IBAction private func addPressed() {
+        deselectOperationButtons()
+        selectOperationButton(addButton, true)
+        
         calculatorEngine.addPressed()
         refreshLCDDisplay()
     }
     
     @IBAction private func minusPressed() {
+        deselectOperationButtons()
+        selectOperationButton(minusButton, true)
+        
         calculatorEngine.minusPressed()
         refreshLCDDisplay()
     }
     
     @IBAction private func multiplyPressed() {
+        deselectOperationButtons()
+        selectOperationButton(multiplyButton, true)
+        
         calculatorEngine.multiplyPressed()
         refreshLCDDisplay()
     }
     
     @IBAction private func dividePressed() {
+        deselectOperationButtons()
+        selectOperationButton(divideButton, true)
         
         calculatorEngine.dividePressed()
         refreshLCDDisplay()
     }
     
     @IBAction private func equalsPressed() {
+        deselectOperationButtons()
+        selectOperationButton(equalsButton, true)
+        
         calculatorEngine.equalsPressed()
         refreshLCDDisplay()
     }
     
     // MARK: - Number Input
     @IBAction private func decimalPressed() {
+        deselectOperationButtons()
+        
         calculatorEngine.decimalPressed()
         refreshLCDDisplay()
     }
@@ -219,6 +250,8 @@ class CalculatorViewController: UIViewController {
     // NOTES: - By accessing the tag attribute allows you
     //          to know which sender button send things.
     @IBAction private func numberPressed(_ sender: UIButton) {
+        deselectOperationButtons()
+        
         let number = sender.tag
         
         calculatorEngine.numberPressed(number)
