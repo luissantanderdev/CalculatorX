@@ -8,10 +8,7 @@
 /**
         Popular to common belief comments are not to be used in code. your code
             must convey to future developers what you are trying to do so what
-                my university tought me I have to scrap it in the final refactoring.
- 
- 
- 
+                my university tought me I have to scrap it in the final refactoring.k
  */
 
 import UIKit
@@ -181,6 +178,7 @@ class CalculatorViewController: UIViewController {
     }
     
     // MARK: - IBActions
+    
     @IBAction private func clearPressed() {
         deselectOperationButtons()
         calculatorEngine.clearPressed()
@@ -252,10 +250,8 @@ class CalculatorViewController: UIViewController {
         deselectOperationButtons()
         
         let number = sender.tag
-        
         calculatorEngine.numberPressed(number)
         refreshLCDDisplay()
-        
     }
     
     // MARK: - Refresh LCDDisplay
