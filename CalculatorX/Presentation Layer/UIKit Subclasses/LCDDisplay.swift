@@ -131,13 +131,18 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         // TODO: Inform Calculator System of Number -> doubleValueFromPaste
         
         let userInfo: [AnyHashable: Any] = ["PasteKey": numberToPaste]
-        
+    
+        // It will broadcast a notification out into the world which if someone is
+        // listening to this will receive the notification.
         NotificationCenter.default.post(name: Notification.Name("luissantanderdev.com.CalculatorX"), object: nil, userInfo: userInfo)
+
     }
     
     // MARK: - Debugging
     
-    private func printOut(value: Any) {
-        print(value)
+    private func printAtLine(number: Int, output: Any?) {
+        guard let output = output else { return }
+        print(String(describing: type(of: self)))
+        print("\(number): \(output)")
     }
 }

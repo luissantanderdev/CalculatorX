@@ -64,6 +64,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         addThemeGestureRecognizer()
         redecorateView()
+        registerForNotifications()
     }
     
     // MARK: - Gestures
@@ -257,6 +258,33 @@ class CalculatorViewController: UIViewController {
     // MARK: - Refresh LCDDisplay
     private func refreshLCDDisplay() {
         lcdDisplay.label.text = calculatorEngine.lcdDisplayText
+    }
+    
+    // MARK: - Notifications
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePasteNotification(notification:)), name: Notification.Name("luissantanderdev.com.CalculatorX"), object: nil)
+    }
+    
+    @objc private func didReceivePasteNotification(notification: Notification) {
+        guard let doubleValue = notification.userInfo?["PasteKey"] as? Double else { return }
+        
+        pasteNumberIntoCalculator(from: Decimal(doubleValue))
+    }
+    
+    // MARK: - Copy & Paste
+    
+    private func pasteNumberIntoCalculator(from decimal: Decimal) {
+        calculatorEngine.pasteInNumber(from: decimal)
+        refreshLCDDisplay()
+    }
+    
+    // MARK: - Debugging
+    
+    private func printAtLine(number: Int, output: Any?) {
+        guard let output = output else { return }
+        print(String(describing: type(of: self)))
+        print("\(number): \(output)")
     }
 }
 

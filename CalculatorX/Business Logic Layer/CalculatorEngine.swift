@@ -118,6 +118,11 @@ struct CalculatorEngine {
         print("Equation " + inputController.mathEquation.generatePrintOut())
     }
     
+    private func printAtLine(number: Int, output: Any?) {
+        guard let printOut = output as? String else { return }
+        print("\(number): \(printOut)")
+    }
+    
     // MARK: - Number Input
     
     mutating func decimalPressed() {
@@ -133,6 +138,17 @@ struct CalculatorEngine {
     mutating private func clearHistory() {
         historyLog = []
     }
+    
+    // MARK: - Copy & Paste
+    
+    mutating func pasteInNumber(from decimal: Decimal) {
+        if inputController.isCompleted {
+            inputController = MathInputController()
+        }
+        
+        inputController.pasteIn(decimal)
+    }
+    
     
     
 }
