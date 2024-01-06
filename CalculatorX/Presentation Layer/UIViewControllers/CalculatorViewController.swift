@@ -78,6 +78,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @objc private func themeGestureRecognizerDidTap(_ gesture: UITapGestureRecognizer) {
+        lcdDisplay.prepareForColorThemeUpdate()
         decorateViewWithNextTheme()
     }
     

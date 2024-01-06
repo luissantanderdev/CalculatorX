@@ -110,6 +110,10 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         menu.showMenu(from: self, rect: rect)
     }
     
+    private func hideMenu() {
+        UIMenuController.shared.hideMenu(from: self)
+    }
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -145,4 +149,12 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         print(String(describing: type(of: self)))
         print("\(number): \(output)")
     }
+    
+    // MARK: Color Themes
+    
+    func prepareForColorThemeUpdate() {
+        hideMenu()
+    }
+    
+    
 }
