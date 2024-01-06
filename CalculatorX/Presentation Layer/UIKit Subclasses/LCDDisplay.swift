@@ -96,7 +96,6 @@ the height of 44 is categorized with the size of our fingers in relation to the 
      }
      */
     private func showMenu(from gestureRecogniser: UILongPressGestureRecognizer) {
-        
         becomeFirstResponder()
         
         let menu = UIMenuController.shared
@@ -155,6 +154,4 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     func prepareForColorThemeUpdate() {
         hideMenu()
     }
-    
-    
 }

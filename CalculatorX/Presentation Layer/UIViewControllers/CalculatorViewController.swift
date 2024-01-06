@@ -182,23 +182,30 @@ class CalculatorViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func clearPressed() {
+        clearButton.bounce()
         deselectOperationButtons()
+        
         calculatorEngine.clearPressed()
         refreshLCDDisplay()
     }
 
     @IBAction private func negatePressed() {
+        negateButton.bounce()
         calculatorEngine.negatePressed()
         refreshLCDDisplay()
     }
 
     @IBAction private func percentagePressed() {
+        percentageButton.bounce()
+        
         calculatorEngine.percentagePressed()
         refreshLCDDisplay()
     }
 
     // MARK: - Operations
     @IBAction private func addPressed() {
+        addButton.bounce()
+        
         deselectOperationButtons()
         selectOperationButton(addButton, true)
         
@@ -207,6 +214,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func minusPressed() {
+        minusButton.bounce()
+        
         deselectOperationButtons()
         selectOperationButton(minusButton, true)
         
@@ -215,6 +224,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func multiplyPressed() {
+        multiplyButton.bounce()
+        
         deselectOperationButtons()
         selectOperationButton(multiplyButton, true)
         
@@ -223,6 +234,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func dividePressed() {
+        divideButton.bounce()
+        
         deselectOperationButtons()
         selectOperationButton(divideButton, true)
         
@@ -231,6 +244,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func equalsPressed() {
+        equalsButton.bounce()
+        
         deselectOperationButtons()
         selectOperationButton(equalsButton, true)
         
@@ -240,6 +255,7 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Number Input
     @IBAction private func decimalPressed() {
+        decimalButton.bounce()
         deselectOperationButtons()
         
         calculatorEngine.decimalPressed()
@@ -249,6 +265,8 @@ class CalculatorViewController: UIViewController {
     // NOTES: - By accessing the tag attribute allows you
     //          to know which sender button send things.
     @IBAction private func numberPressed(_ sender: UIButton) {
+        sender.bounce()
+        
         deselectOperationButtons()
         
         let number = sender.tag
