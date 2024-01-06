@@ -16,7 +16,6 @@ import UIKit
  if you want to be pro at animations you need to either ease in animations or ease out animations. Experiment.
  */
 
-
 extension UIButton {
     
     func bounce() {
