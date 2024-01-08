@@ -39,25 +39,41 @@ extension UIButton {
         }
     }
     
+    // NOTES:
+    /**
+        Using [weak in self] in the nested closure loops helps resolved the issue when it comes to memory management on the stack calls where the reference pointer needs to move. When this animations
+           are called they need to be de-allocated from the call stack in ARC.
+     
+            when you do [weak self] in you are making the object self a weak reference.
+     
+            Suppose the user navigated to a next screen and animation was running before having [weak self]
+                the animation would still be running in the background using device memory but by invoking weak
+             reference self this solves the problem that when user moves away the animation would stop.
+              making the memory efficiency of the app much better since it de-allocates.
+     
+            industry standard is to write code how we are communicating to the memory management system ARC.
+     */
+    
+    
     func moveUp() {
         // let imageView = UIImageView() // if you were to use an image
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut) {
-            self.transform = CGAffineTransform(translationX: 0, y: -50)
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+            self?.transform = CGAffineTransform(translationX: 0, y: -50)
         } completion: { _ in
             self.moveDown()
         }
     }
     
     func moveDown() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
-            self.transform = CGAffineTransform(translationX: 0, y: 5)
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+            self?.transform = CGAffineTransform(translationX: 0, y: 5)
         } completion: { _ in
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
-                self.transform = CGAffineTransform(translationX: 0, y: -2)
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+                self?.transform = CGAffineTransform(translationX: 0, y: -2)
             } completion: { _ in
-                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
-                    self.transform = CGAffineTransform(translationX: 0, y: 0)
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+                    self?.transform = CGAffineTransform(translationX: 0, y: 0)
                 } completion: { _ in
                     // do nothing
                 }
@@ -66,11 +82,11 @@ extension UIButton {
     }
     
     func moveUpWithSpringDamping() {
-        UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) {
-            self.transform = CGAffineTransform(translationX: 0, y: 50)
+        UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+            self?.transform = CGAffineTransform(translationX: 0, y: 50)
         } completion: { _ in
-            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut) {
-                self.transform = CGAffineTransform(translationX: 0, y: 0)
+            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+                self?.transform = CGAffineTransform(translationX: 0, y: 0)
             } completion: { _ in
                 // do nothing
             }
