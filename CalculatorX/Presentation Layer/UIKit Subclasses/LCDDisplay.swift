@@ -96,6 +96,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
      }
      */
     private func showMenu(from gestureRecogniser: UILongPressGestureRecognizer) {
+        highlightScreen()
         becomeFirstResponder()
         
         let menu = UIMenuController.shared
@@ -111,6 +112,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     
     private func hideMenu() {
         UIMenuController.shared.hideMenu(from: self)
+        unhighlightScreen()
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -153,5 +155,29 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     
     func prepareForColorThemeUpdate() {
         hideMenu()
+    }
+    
+    // MARK: Animations
+    
+    private func highlightScreen() {
+        let theme = ThemeManager.shared.currentTheme
+        
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.backgroundColor = UIColor(hex: theme.operationColor)
+            self?.label.textColor = UIColor(hex: theme.operationTitleColor)
+        } completion: { _ in
+            //
+        }
+    }
+    
+    private func unhighlightScreen() {
+        let theme = ThemeManager.shared.currentTheme
+        
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.backgroundColor = UIColor.clear
+            self?.label.textColor = UIColor(hex: theme.displayColor)
+        } completion: { _ in
+            //
+        }
     }
 }
