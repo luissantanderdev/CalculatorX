@@ -14,30 +14,47 @@ import UIKit
  UIView is the root class of all views in UIKit for iOS
  
  if you want to be pro at animations you need to either ease in animations or ease out animations. Experiment.
+ 
+ Delete functions that are no longer use but since I am studying Ima leave the code behind for animation
  */
 
 extension UIButton {
     
     func bounce() {
-        moveUp()
-       // moveUpWithSpringDamping() // use this to use damping function which is the same as moveUp functionality
-    }
-    
-    func growLarger() {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn) {
-            self.transform = CGAffineTransform(scaleX: 4, y: 4)
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut]) { [weak self] in
+            self?.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         } completion: { _ in
-            // do nothing but this fires after animation fires.
+            UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseInOut]) { [weak self] in
+//                self?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self?.transform = CGAffineTransform.identity // same as above resets button to orignal state.
+            } completion: { _ in
+                //
+            }
         }
     }
+
+    // NOTE: OLD Code used to move up animation if you want to check out the code
     
-    func makeSmaller() {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn) {
-            self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        } completion: { _ in
-            // do nothing but this fires after animation fires.
-        }
-    }
+//    func bounce() {
+//        moveUp()
+//       // moveUpWithSpringDamping() // use this to use damping function which is the same as moveUp functionality
+//    }
+    
+//    func growLarger() {
+//        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn) {
+//            self.transform = CGAffineTransform(scaleX: 4, y: 4)
+//        } completion: { _ in
+//            // do nothing but this fires after animation fires.
+//        }
+//    }
+//
+//    func makeSmaller() {
+//        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn) {
+//            self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        } completion: { _ in
+//            // do nothing but this fires after animation fires.
+//        }
+//    }
     
     // NOTES:
     /**
@@ -55,43 +72,42 @@ extension UIButton {
      */
     
     
-    func moveUp() {
-        // let imageView = UIImageView() // if you were to use an image
-        
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-            self?.transform = CGAffineTransform(translationX: 0, y: -50)
-        } completion: { _ in
-            self.moveDown()
-        }
-    }
+//    func moveUp() {
+//        // let imageView = UIImageView() // if you were to use an image
+//
+//        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//            self?.transform = CGAffineTransform(translationX: 0, y: -50)
+//        } completion: { _ in
+//            self.moveDown()
+//        }
+//    }
+//
+//    func moveDown() {
+//        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//            self?.transform = CGAffineTransform(translationX: 0, y: 5)
+//        } completion: { _ in
+//            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//                self?.transform = CGAffineTransform(translationX: 0, y: -2)
+//            } completion: { _ in
+//                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//                    self?.transform = CGAffineTransform(translationX: 0, y: 0)
+//                } completion: { _ in
+//                    // do nothing
+//                }
+//            }
+//        }
+//    }
     
-    func moveDown() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-            self?.transform = CGAffineTransform(translationX: 0, y: 5)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-                self?.transform = CGAffineTransform(translationX: 0, y: -2)
-            } completion: { _ in
-                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-                    self?.transform = CGAffineTransform(translationX: 0, y: 0)
-                } completion: { _ in
-                    // do nothing
-                }
-            }
-        }
-    }
-    
-    func moveUpWithSpringDamping() {
-        UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-            self?.transform = CGAffineTransform(translationX: 0, y: 50)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-                self?.transform = CGAffineTransform(translationX: 0, y: 0)
-            } completion: { _ in
-                // do nothing
-            }
-        }
-        
-    }
+//    func moveUpWithSpringDamping() {
+//        UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//            self?.transform = CGAffineTransform(translationX: 0, y: 50)
+//        } completion: { _ in
+//            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
+//                self?.transform = CGAffineTransform(translationX: 0, y: 0)
+//            } completion: { _ in
+//                // do nothing
+//            }
+//        }
+//    }
 }
 
