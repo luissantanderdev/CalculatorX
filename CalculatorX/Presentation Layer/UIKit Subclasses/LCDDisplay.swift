@@ -35,6 +35,7 @@ class LCDDisplay: UIView {
     }
     
     private func sharedInit() {
+        layer.cornerRadius = 20
         addMenuGestureRecogniser()
     }
     
@@ -96,6 +97,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
      }
      */
     private func showMenu(from gestureRecogniser: UILongPressGestureRecognizer) {
+        registerNotifications()
         highlightScreen()
         becomeFirstResponder()
         
@@ -112,7 +114,6 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     
     private func hideMenu() {
         UIMenuController.shared.hideMenu(from: self)
-        unhighlightScreen()
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -179,5 +180,20 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         } completion: { _ in
             //
         }
+    }
+    
+    // MARK: - Notifications
+    
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willHideEditMenu(_:)), name: UIMenuController.willHideMenuNotification, object: nil)
+    }
+    
+    private func unregisterNotifications() {
+        NotificationCenter.default.removeObserver(self, name:  UIMenuController.willHideMenuNotification, object: nil)
+    }
+    
+    @objc private func willHideEditMenu(_ notification: Notification) {
+        unhighlightScreen()
+        unregisterNotifications()
     }
 }
