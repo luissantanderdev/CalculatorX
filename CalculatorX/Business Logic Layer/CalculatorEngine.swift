@@ -47,7 +47,7 @@ struct CalculatorEngine {
     
     // MARK: - Equation History
     
-    private var historyLog: [MathEquation] = []
+    private(set) var historyLog: [MathEquation] = []
     
     // MARK: - LCD Display
     

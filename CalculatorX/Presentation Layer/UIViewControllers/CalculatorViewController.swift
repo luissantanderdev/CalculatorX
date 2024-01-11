@@ -294,11 +294,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @objc private func didReceiveHistoryLogNotification(notification: Notification) {
+        presentHistoryLogScreen()
+    }
+    
+    private func presentHistoryLogScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let logViewController = storyboard.instantiateViewController(withIdentifier: "LogViewController") as? LogViewController else {
             return
         }
         
+        logViewController.datasource = calculatorEngine.historyLog
         present(logViewController, animated: true, completion: nil)
     }
     
