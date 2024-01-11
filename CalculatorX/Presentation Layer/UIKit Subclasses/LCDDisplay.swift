@@ -155,6 +155,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     // MARK: Color Themes
     
     func prepareForColorThemeUpdate() {
+        unhighlightScreen(animated: false)
         hideMenu()
     }
     
@@ -171,10 +172,11 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         }
     }
     
-    private func unhighlightScreen() {
+    private func unhighlightScreen(animated: Bool) {
         let theme = ThemeManager.shared.currentTheme
         
-        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) { [weak self] in
+        let duration = animated ? 0.15 : 0
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.backgroundColor = UIColor.clear
             self?.label.textColor = UIColor(hex: theme.displayColor)
         } completion: { _ in
@@ -193,7 +195,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     }
     
     @objc private func willHideEditMenu(_ notification: Notification) {
-        unhighlightScreen()
+        unhighlightScreen(animated: true)
         unregisterNotifications()
     }
 }
