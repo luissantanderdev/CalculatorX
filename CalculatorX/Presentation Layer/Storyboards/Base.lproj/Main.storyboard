@@ -355,6 +355,35 @@
             </objects>
             <point key="canvasLocation" x="-13" y="-27"/>
         </scene>
+        <!--Log View Controller-->
+        <scene sceneID="qLW-ma-MM6">
+            <objects>
+                <tableViewController storyboardIdentifier="LogViewController" id="4i6-b5-eee" customClass="LogViewController" customModule="CalculatorX" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EEc-Cv-gNd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="161" id="r3T-qu-73n" customClass="EquationTableViewCell" customModule="CalculatorX" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="161"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r3T-qu-73n" id="pOC-4g-lCW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="4i6-b5-eee" id="EJz-lX-erv"/>
+                            <outlet property="delegate" destination="4i6-b5-eee" id="qV7-1n-8dR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgO-LH-ssB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072.8" y="-27.339901477832512"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
