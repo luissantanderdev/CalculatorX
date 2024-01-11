@@ -15,6 +15,16 @@ class LCDDisplay: UIView {
     
     @IBOutlet var label: UILabel!
     
+    // MARK: - Custom Menu Items
+    
+    private var historyMenuItem: UIMenuItem {
+        return UIMenuItem(title: "View History", action: #selector(self.displayMathEquationHistory))
+    }
+    
+    @objc private func displayMathEquationHistory() {
+        NotificationCenter.default.post(name: Notification.Name("luissantanderdev.com.CalculatorX.LCDDisplay.displayHistory"), object: nil)
+    }
+    
     // MARK: - Initialisers
     
     // Either create this class in code by using this initialisers
@@ -102,6 +112,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
         becomeFirstResponder()
         
         let menu = UIMenuController.shared
+        menu.menuItems = [historyMenuItem]
         guard menu.isMenuVisible == false else { return }
         
         let locationOfTouch = gestureRecogniser.location(in: self)
@@ -121,7 +132,7 @@ the height of 44 is categorized with the size of our fingers in relation to the 
     }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:))
+        return action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(self.displayMathEquationHistory)
     }
     
     @objc override func copy(_ sender: Any?) {

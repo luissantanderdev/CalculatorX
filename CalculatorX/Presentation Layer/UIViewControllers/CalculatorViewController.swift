@@ -283,12 +283,18 @@ class CalculatorViewController: UIViewController {
     
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePasteNotification(notification:)), name: Notification.Name("luissantanderdev.com.CalculatorX"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveHistoryLogNotification(notification:)), name: Notification.Name("luissantanderdev.com.CalculatorX.LCDDisplay.displayHistory"), object: nil)
     }
     
     @objc private func didReceivePasteNotification(notification: Notification) {
         guard let doubleValue = notification.userInfo?["PasteKey"] as? Double else { return }
         
         pasteNumberIntoCalculator(from: Decimal(doubleValue))
+    }
+    
+    @objc private func didReceiveHistoryLogNotification(notification: Notification) {
+        // TODO: display history screen
     }
     
     // MARK: - Copy & Paste
