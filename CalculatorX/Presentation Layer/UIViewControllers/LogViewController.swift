@@ -7,6 +7,15 @@
 
 import UIKit
 
+// NOTES:
+/**
+ 
+ If you want to have a serious career in iOS you must never force unwrap optionals but always guard against them or set a default value in order
+ to protect yourself against nil values.
+ 
+ 
+ */
+
 class LogViewController: UITableViewController {
     
     // MARK: - Data Source
@@ -35,9 +44,18 @@ class LogViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EquationTableViewCell", for: indexPath)
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquationTableViewCell", for: indexPath) as? EquationTableViewCell else {
+            return UITableViewCell()
+        }
+        
         // Configure the cell...
+        
+        let equation = datasource[indexPath.row]
+        cell.lhsLabel.text = equation.lhs.formatted()
+        cell.rhsLabel.text = equation.generateStringRepresentationOfOperation() + " " + (equation.rhs?.formatted() ?? "")
+        cell.resultLabel.text = "= " + (equation.result?.formatted() ?? "")
+        
+        cell.resultLabel.font = UIFont.boldSystemFont(ofSize: cell.resultLabel.font.pointSize + 2)
 
         return cell
     }

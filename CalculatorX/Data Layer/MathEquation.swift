@@ -94,7 +94,7 @@ struct MathEquation {
         return lhs.formatted() + " " + operationString + " " + (rhs?.formatted() ?? "") + " = " + (result?.formatted() ?? "Error")
     }
     
-    private func generateStringRepresentationOfOperation() -> String {
+    func generateStringRepresentationOfOperation() -> String {
         // NOTE: Instead of writing the guard statement you can alseo do the default
         // guard let operation = self.operation else { return "" }
         
