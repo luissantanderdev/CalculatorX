@@ -28,16 +28,13 @@
 // *******************************************************************************************
 import Foundation
 
-
 // NOTES: -
 /**
- 
  The calculator engine is the API that is exposed to the presentation layer.
  
  for consitancy we added guard inputController.isCompleted == false else { return } on all functions in order to tell future developers about
  the validation and they can understand the behaviour we implemented. 
  */
-
 
 struct CalculatorEngine {
     
@@ -149,6 +146,9 @@ struct CalculatorEngine {
         inputController.pasteIn(decimal)
     }
     
-    
-    
+    mutating func pasteInMathEquation(from mathEquation: MathEquation) {
+        guard let result = mathEquation.result else { return }
+        inputController = MathInputController()
+        pasteInNumber(from: result)
+    }
 }

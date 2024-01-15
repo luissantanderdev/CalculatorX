@@ -327,9 +327,7 @@ class CalculatorViewController: UIViewController {
     }
     
     private func pasteMathEquationIntoCalculator(from mathEquation: MathEquation) {
-        // TODO: Work on this Part of the code
-        
-        // calculatorEngine.pasteInMathEquation(from: mathEquation)
+        calculatorEngine.pasteInMathEquation(from: mathEquation)
         refreshLCDDisplay()
     }
     
