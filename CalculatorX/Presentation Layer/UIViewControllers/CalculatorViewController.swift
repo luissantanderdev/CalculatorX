@@ -320,7 +320,7 @@ class CalculatorViewController: UIViewController {
         navigationController.navigationBar.tintColor = UIColor(hex: theme.displayColor)
         
         // This prevents from color change when scrolling up in the UI View.
-        // But is controversial because apple could change this behavior down the road. 
+        // But is controversial because apple could change this behavior down the road.
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         present(navigationController, animated: true, completion: nil)
@@ -346,6 +346,3 @@ class CalculatorViewController: UIViewController {
         print("\(number): \(output)")
     }
 }
-
-
-
