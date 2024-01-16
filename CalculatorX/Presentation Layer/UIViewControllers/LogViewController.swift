@@ -24,7 +24,7 @@ class LogViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        decorateView()
         setupNavigationBar()
     }
     
@@ -60,11 +60,15 @@ class LogViewController: UITableViewController {
         cell.lhsLabel.text = equation.lhs.formatted()
         cell.rhsLabel.text = equation.generateStringRepresentationOfOperation() + " " + (equation.rhs?.formatted() ?? "")
         cell.resultLabel.text = "= " + (equation.result?.formatted() ?? "")
-        
         cell.resultLabel.font = UIFont.boldSystemFont(ofSize: cell.resultLabel.font.pointSize + 2)
+        cell.selectedBackgroundView = UIView() // When cell is created we create a UIView for it.
+        
+        decorateCell(cell)
 
         return cell
     }
+    
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let equation = datasource[indexPath.row]
@@ -73,5 +77,39 @@ class LogViewController: UITableViewController {
         NotificationCenter.default.post(name: NSNotification.Name("luissantanderdev.com.CalculatorX.LogViewController.pasteMathEquation"), object: nil, userInfo: userInfo)
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: Decorate
+    
+    // NOTES:
+    /**
+        (_ <_--------> the underscore in the function means that is referencing the cell object instead of passing it by value.
+     */
+    
+    private func decorateCell(_ cell: EquationTableViewCell) {
+        let theme = ThemeManager.shared.currentTheme
+        cell.backgroundColor = UIColor(hex: theme.backgroundColor)
+        cell.selectedBackgroundView?.backgroundColor = UIColor(hex: theme.operationColor)
+        cell.lhsLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.rhsLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.resultLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.lhsLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        cell.rhsLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        cell.resultLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+    }
+    
+    private func decorateView() {
+        let theme = ThemeManager.shared.currentTheme
+        tableView.backgroundColor = UIColor(hex: theme.backgroundColor)
+        tableView.tintColor = UIColor(hex: theme.displayColor)
+        
+        tableView.separatorColor = UIColor(hex: theme.displayColor)
+        
+        switch theme.statusBarStyle {
+        case .light:
+            tableView.indicatorStyle = .white
+        case .dark:
+            tableView.indicatorStyle = .black
+        }
     }
 }

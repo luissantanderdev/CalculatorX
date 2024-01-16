@@ -314,7 +314,14 @@ class CalculatorViewController: UIViewController {
         logViewController.datasource = calculatorEngine.historyLog
         
         let navigationController = UINavigationController(rootViewController: logViewController)
+        let theme = ThemeManager.shared.currentTheme
         
+        navigationController.navigationBar.backgroundColor = UIColor(hex: theme.backgroundColor)
+        navigationController.navigationBar.tintColor = UIColor(hex: theme.displayColor)
+        
+        // This prevents from color change when scrolling up in the UI View.
+        // But is controversial because apple could change this behavior down the road. 
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         present(navigationController, animated: true, completion: nil)
     }
