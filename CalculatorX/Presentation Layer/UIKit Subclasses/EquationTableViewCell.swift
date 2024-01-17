@@ -9,6 +9,8 @@ import UIKit
 
 class EquationTableViewCell: UITableViewCell {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet var lhsLabel: UILabel!
     @IBOutlet var rhsLabel: UILabel!
     @IBOutlet var resultLabel: UILabel!
@@ -27,9 +29,10 @@ class EquationTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
+    
+    // MARK: Display Tick
 
     func displayTick() {
         UIView.animate(withDuration: 0.25, delay: 0, options: []) { [weak self] in

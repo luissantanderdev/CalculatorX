@@ -127,6 +127,10 @@ struct CalculatorEngine {
     }
     
     mutating func numberPressed(_ number: Int) {
+        if inputController.isCompleted {
+            inputController = MathInputController()
+        }
+        
         inputController.numberPressed(number)
     }
     
