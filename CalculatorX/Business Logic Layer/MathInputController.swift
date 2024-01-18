@@ -51,6 +51,12 @@ struct MathInputController {
     private(set) var mathEquation = MathEquation(lhs: .zero)
     private var isEnteringDecimal = false
     
+    // MARK: - Initialize
+    
+    init(from mathInputController: MathInputController) {
+        lhs = mathInputController.result ?? Decimal(0)
+    }
+    
     // MARK: - LCD Display
     
     var lcdDisplayText = ""
@@ -77,6 +83,7 @@ struct MathInputController {
         }
     }
     
+    // This is Property in Swift
     var result: Decimal? {
         get {
             return mathEquation.result
@@ -85,6 +92,11 @@ struct MathInputController {
             mathEquation.result = newValue
             lcdDisplayText = formatLCDDisplay(mathEquation.result)
         }
+    }
+
+    // This is a Function in Swift
+    func generatePrintOut() -> String {
+        return mathEquation.generatePrintOut()
     }
     
     // MARK: - Initializer
@@ -278,4 +290,5 @@ struct MathInputController {
         
         lcdDisplayText = formatLCDDisplay(decimal)
     }
+
 }

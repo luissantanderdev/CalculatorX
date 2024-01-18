@@ -79,20 +79,16 @@ struct CalculatorEngine {
             You are accessing code that is out of bounds on what should be accessed by the Calculator Engine.
      
             Layered Architecture.
-        
      */
-    
     
     mutating func addPressed() {
         // guard inputController.isCompleted == false else { return } // <-- Use this if no subsequent equals.
+        // accept the result and pace it into a new MathInput Controller
+        // accept the operation
+        // allow the user to enter the rhs of the equation
         
         if inputController.isCompleted {
-            // accept the result and pace it into a new MathInput Controller
-            // accept the operation
-            // allow the user to enter the rhs of the equation
-            let result = inputController.result ?? Decimal(0)
-            inputController = MathInputController()
-            inputController.lhs = result
+            inputController = MathInputController(from: inputController)
         }
         
         inputController.addPressed()
@@ -133,7 +129,7 @@ struct CalculatorEngine {
     //       this equation only exists in development. tells all our collegues
     //       that this is for debugging purposes only. 
     private func printEquationToDebugConsole() {
-        print("Equation " + inputController.mathEquation.generatePrintOut())
+        print("Equation " + inputController.generatePrintOut())
     }
     
     private func printAtLine(number: Int, output: Any?) {
