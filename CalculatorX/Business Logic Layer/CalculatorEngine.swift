@@ -72,8 +72,28 @@ struct CalculatorEngine {
     
     // MARK: - Operations
     
+    // NOTES
+    /**
+            Sphagetti Code occurs when you are accessing a variable such as the inputController.mathEquation.result
+            and setting a value which breaks the single responsibility architecture of the MathInputController.
+            You are accessing code that is out of bounds on what should be accessed by the Calculator Engine.
+     
+            Layered Architecture.
+        
+     */
+    
+    
     mutating func addPressed() {
-        guard inputController.isCompleted == false else { return }
+        // guard inputController.isCompleted == false else { return } // <-- Use this if no subsequent equals.
+        
+        if inputController.isCompleted {
+            // accept the result and pace it into a new MathInput Controller
+            // accept the operation
+            // allow the user to enter the rhs of the equation
+            let result = inputController.result ?? Decimal(0)
+            inputController = MathInputController()
+            inputController.lhs = result
+        }
         
         inputController.addPressed()
     }
@@ -106,6 +126,7 @@ struct CalculatorEngine {
     }
     
     // MARK: - Debug Console
+    
     // NOTE: This function was created particularly to tell future developers
     //       that this is inteded to just print the math equation to the console.
     //       why because it is expensive operation to print when an app is deployed.
