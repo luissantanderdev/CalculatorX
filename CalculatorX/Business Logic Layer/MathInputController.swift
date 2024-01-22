@@ -278,6 +278,19 @@ struct MathInputController {
         return mathEquation.executed
     }
     
+    var isReadyToExecute: Bool {
+        guard mathEquation.executed == false else {
+            return false
+        }
+        
+        if let _ = mathEquation.operation,
+           let _ = mathEquation.rhs {
+            return true
+        }
+        
+        return false 
+    }
+    
     // MARK: - Copy & Paste
     
     mutating func pasteIn(_ decimal: Decimal) {

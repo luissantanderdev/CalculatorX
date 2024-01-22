@@ -86,6 +86,10 @@ struct CalculatorEngine {
         // accept the result and pace it into a new MathInput Controller
         // accept the operation
         // allow the user to enter the rhs of the equation
+        if inputController.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
         
         if inputController.isCompleted {
             populateFromResult()
@@ -95,6 +99,11 @@ struct CalculatorEngine {
     }
     
     mutating func minusPressed() {
+        if inputController.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
+        
         if inputController.isCompleted {
             populateFromResult()
         }
@@ -103,6 +112,19 @@ struct CalculatorEngine {
     }
     
     mutating func multiplyPressed() {
+        // Commit an equation if needed if we subsequently keep pressing the multiply button
+        // execute the equation if ready
+        
+        // TODO: - To Create this features.
+        // task 1: set result to left hand side
+        // task 2: multiply would be appended.
+        
+        if inputController.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+            // 5 * 5 * <--- this scenario 
+        }
+        
         if inputController.isCompleted {
             populateFromResult()
         }
@@ -111,6 +133,12 @@ struct CalculatorEngine {
     }
     
     mutating func dividePressed() {
+        if inputController.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
+        
+        
         if inputController.isCompleted {
             populateFromResult()
         }
@@ -121,12 +149,15 @@ struct CalculatorEngine {
     mutating func equalsPressed() {
         guard inputController.isCompleted == false else { return }
         
+        executeMathInputController()
+        // NSLog(mathEquation.generatePrintOut()) // will print out in release build
+        
+    }
+    
+    mutating private func executeMathInputController() {
         inputController.execute()
         historyLog.append(inputController.mathEquation)
         printEquationToDebugConsole()
-        
-        // NSLog(mathEquation.generatePrintOut()) // will print out in release build
-        
     }
     
     // MARK: - Populate New Math Input Controller

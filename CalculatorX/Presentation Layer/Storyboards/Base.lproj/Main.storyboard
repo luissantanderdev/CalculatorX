@@ -50,6 +50,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="kSD-bT-91R" secondAttribute="height" multiplier="1:1" id="beJ-0E-amY"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="AC"/>
                                                 <connections>
@@ -146,7 +147,7 @@
                                                 </constraints>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="X"/>
+                                                <state key="normal" title="x"/>
                                                 <connections>
                                                     <action selector="multiplyPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="jmV-qz-oa1"/>
                                                 </connections>
