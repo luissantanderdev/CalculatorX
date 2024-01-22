@@ -80,7 +80,7 @@ struct CalculatorEngine {
      
             Layered Architecture.
      */
-    
+        
     mutating func addPressed() {
         // guard inputController.isCompleted == false else { return } // <-- Use this if no subsequent equals.
         // accept the result and pace it into a new MathInput Controller
@@ -88,24 +88,32 @@ struct CalculatorEngine {
         // allow the user to enter the rhs of the equation
         
         if inputController.isCompleted {
-            inputController = MathInputController(from: inputController)
+            populateFromResult()
         }
         
         inputController.addPressed()
     }
     
     mutating func minusPressed() {
-        guard inputController.isCompleted == false else { return }
+        if inputController.isCompleted {
+            populateFromResult()
+        }
         
         inputController.minusPressed()
     }
     
     mutating func multiplyPressed() {
+        if inputController.isCompleted {
+            populateFromResult()
+        }
+        
         inputController.multiplyPressed()
     }
     
     mutating func dividePressed() {
-        guard inputController.isCompleted == false else { return }
+        if inputController.isCompleted {
+            populateFromResult()
+        }
         
         inputController.dividePressed()
     }
@@ -119,6 +127,12 @@ struct CalculatorEngine {
         
         // NSLog(mathEquation.generatePrintOut()) // will print out in release build
         
+    }
+    
+    // MARK: - Populate New Math Input Controller
+    
+    private mutating func populateFromResult() {
+        inputController = MathInputController(from: inputController)
     }
     
     // MARK: - Debug Console
