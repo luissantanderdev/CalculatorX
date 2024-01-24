@@ -147,11 +147,13 @@ struct CalculatorEngine {
     }
     
     mutating func equalsPressed() {
-        guard inputController.isCompleted == false else { return }
+        if inputController.isCompleted {
+            inputController = MathInputController(byPopulatingCalculationFrom: inputController)
+        }
         
+        guard inputController.isReadyToExecute else { return }
         executeMathInputController()
         // NSLog(mathEquation.generatePrintOut()) // will print out in release build
-        
     }
     
     mutating private func executeMathInputController() {
@@ -163,7 +165,7 @@ struct CalculatorEngine {
     // MARK: - Populate New Math Input Controller
     
     private mutating func populateFromResult() {
-        inputController = MathInputController(from: inputController)
+        inputController = MathInputController(byPopulatingResultFrom: inputController)
     }
     
     // MARK: - Debug Console
