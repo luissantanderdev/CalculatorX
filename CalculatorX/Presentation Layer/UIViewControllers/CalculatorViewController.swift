@@ -85,7 +85,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Decorate
     
     private func decorateViewWithNextTheme() {
-        print("User did tap")
+        print("User Tapped Screen and Next Color Scheme Loaded")
         ThemeManager.shared.moveToTheNextTheme()
         redecorateView()
     }

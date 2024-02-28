@@ -59,13 +59,17 @@ struct CalculatorEngine {
     }
     
     mutating func negatePressed() {
-        guard inputController.isCompleted == false else { return }
+        if inputController.isCompleted {
+            populateFromResult()
+        }
         
         inputController.negatePressed()
     }
     
     mutating func percentagePressed() {
-        guard inputController.isCompleted == false else { return }
+        if inputController.isCompleted {
+            populateFromResult()
+        }
         
         inputController.percentagePressed()
     }
@@ -138,7 +142,6 @@ struct CalculatorEngine {
             populateFromResult()
         }
         
-        
         if inputController.isCompleted {
             populateFromResult()
         }
@@ -187,6 +190,10 @@ struct CalculatorEngine {
     // MARK: - Number Input
     
     mutating func decimalPressed() {
+        if inputController.isCompleted {
+            inputController = MathInputController()
+        }
+        
         inputController.decimalPressed()
     }
     

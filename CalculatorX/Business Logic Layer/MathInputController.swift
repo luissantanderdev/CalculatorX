@@ -204,7 +204,6 @@ struct MathInputController {
         isEnteringDecimal = false
     }
     
-    
     // MARK: - Number Input
     
     mutating func decimalPressed() {
